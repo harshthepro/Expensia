@@ -12,12 +12,13 @@
 // 6. Paste the entire object here, replacing the placeholder object below.
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyC6X2J9n4QLCpBMTOkibbf2jnuZINfa0lM",
+  authDomain: "ruppewatch.firebaseapp.com",
+  projectId: "ruppewatch",
+  storageBucket: "ruppewatch.appspot.com",
+  messagingSenderId: "55956180070",
+  appId: "1:55956180070:web:15211af23a2c774095b1a7",
+  measurementId: "G-BD82W97QMW"
 };
 
 // --- Additional Firebase Setup (Do this in the Firebase Console) ---
