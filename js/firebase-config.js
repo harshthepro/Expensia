@@ -16,18 +16,13 @@ const firebaseConfig = {
 
 // Export the config to be used in other scripts
 export { firebaseConfig };
-  messagingSenderId: "55956180070",git branch -M main
-git push -u origin main
-  appId: "1:55956180070:web:15211af23a2c774095b1a7",
-  measurementId: "G-BD82W97QMW"
-};
 
 // --- Additional Firebase Setup (Do this in the Firebase Console) ---
 // 1. Enable Authentication:
 //    - Go to "Authentication" > "Sign-in method".
 //    - Enable "Email/Password".
 //    - Enable "Google".
-//
+//giy
 // 2. Setup Firestore Database:
 //    - Go to "Firestore Database" > "Create database".
 //    - Start in "production mode".
