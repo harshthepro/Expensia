@@ -1,22 +1,23 @@
 // ---
 // Part 1: Firebase Configuration
 // ---
-// This file will hold your Firebase project's configuration keys.
-// Follow the instructions below to get your own keys.
-
-// 1. Go to the Firebase console: https://console.firebase.google.com/
-// 2. Create a new project (or use an existing one).
-// 3. In your project's dashboard, click the "</>" icon to add a web app.
-// 4. Register the app (you can give it any nickname).
-// 5. Firebase will give you a `firebaseConfig` object. Copy it.
-// 6. Paste the entire object here, replacing the placeholder object below.
+// This file holds your Firebase project's configuration keys.
+// The values below have been updated with the ones you provided.
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC6X2J9n4QLCpBMTOkibbf2jnuZINfa0lM",
-  authDomain: "ruppewatch.firebaseapp.com",
-  projectId: "ruppewatch",
-  storageBucket: "ruppewatch.appspot.com",
-  messagingSenderId: "55956180070",
+  apiKey: "AIzaSyAo_HrefFZgVnhZS0NGnFFJjz1oIekI7nI",
+  authDomain: "expensia-d18d4.firebaseapp.com",
+  projectId: "expensia-d18d4",
+  storageBucket: "expensia-d18d4.firebasestorage.app",
+  messagingSenderId: "340279313261",
+  appId: "1:340279313261:web:43df1c0d84175b5ef09064",
+  measurementId: "G-G32M4MVQSZ"
+};
+
+// Export the config to be used in other scripts
+export { firebaseConfig };
+  messagingSenderId: "55956180070",git branch -M main
+git push -u origin main
   appId: "1:55956180070:web:15211af23a2c774095b1a7",
   measurementId: "G-BD82W97QMW"
 };
