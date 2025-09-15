@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Expensia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+
+    <div class="auth-container">
+        <div class="auth-card glass-card glow-purple">
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <h2>Welcome Back</h2>
+                <div class="input-group">
+                    <input type="email" id="login-email" required>
+                    <label for="login-email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="login-password" required>
+                    <label for="login-password">Password</label>
+                </div>
+                <p id="login-error" class="error-message"></p>
+                <button type="submit" class="cta-button">Login</button>
+                <button type="button" id="google-signin-btn" class="secondary-button">
+                    <i class="fab fa-google"></i> Sign in with Google
+                </button>
+                <p class="form-switch">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <h2>Join Us Today</h2>
+                <div class="input-group">
+                    <input type="email" id="signup-email" required>
+                    <label for="signup-email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signup-password" required>
+                    <label for="signup-password">Password</label>
+                </div>
+                 <div class="input-group">
+                    <input type="password" id="signup-confirm-password" required>
+                    <label for="signup-confirm-password">Confirm Password</label>
+                </div>
+                <p id="signup-error" class="error-message"></p>
+                <button type="submit" class="cta-button">Create Account</button>
+                <p class="form-switch">Already have an account? <a href="#" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js" type="module"></script>
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>

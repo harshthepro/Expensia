@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Expensia</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+
+    <div id="app">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <h1 class="logo">Expensia</h1>
+            
+            <ul class="nav-links">
+                <li class="nav-item active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="#"><i class="fas fa-wallet"></i> Accounts</a></li>
+                <li class="nav-item"><a href="#"><i class="fas fa-chart-pie"></i> Reports</a></li>
+                <li class="nav-item"><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Expense Tracker</h2>
+                    <button id="add-expense-btn" class="cta-button"><i class="fas fa-plus"></i> Add Expense</button>
+                </div>
+                <div class="header-actions">
+                     <div class="profile-summary">
+                        <span id="header-username">Heidi Dolly</span>
+                        <img src="assets/images/default-avatar.png" alt="User Avatar" id="header-avatar">
+                    </div>
+                    <button id="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="summary-cards-container">
+                <div class="glass-card summary-card glow-blue">
+                    <h3>Total Balance</h3>
+                    <p class="large-text" id="total-balance">$0.00</p>
+                </div>
+                <div class="glass-card summary-card glow-purple">
+                    <h3>Monthly Spent</h3>
+                    <p class="large-text" id="monthly-spent">$0.00</p>
+                </div>
+                <div class="glass-card summary-card glow-green" id="budget-card">
+                    <h3>Monthly Budget</h3>
+                    <div id="budget-display">
+                        <p class="large-text" id="budget-amount">$0 / $0</p>
+                        <div class="progress-bar-linear">
+                            <div id="budget-progress-linear" class="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                    <button id="set-budget-btn" class="small-cta-button">Set Budget</button>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="charts-container">
+                <div class="glass-card chart-card">
+                    <h3>Expenses By Category</h3>
+                    <canvas id="category-pie-chart"></canvas>
+                </div>
+                <div class="glass-card chart-card">
+                    <h3>Expenses Over Time</h3>
+                    <canvas id="monthly-bar-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="glass-card transactions-container">
+                <h3>Recent Transactions</h3>
+                <div id="transaction-list" class="transaction-list">
+                    <!-- Expense cards will be dynamically inserted here by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Expense Modal -->
+    <div id="expense-modal" class="modal-container hidden">
+        <div class="glass-card modal-content glow-purple">
+            <button id="close-expense-modal-btn" class="close-btn">&times;</button>
+            <form id="expense-form" class="modal-form">
+                <h2 id="modal-title">Add New Expense</h2>
+                <input type="hidden" id="expense-id">
+                
+                <div class="input-group">
+                    <input type="number" id="expense-amount" required step="0.01">
+                    <label for="expense-amount">Amount</label>
+                </div>
+                
+                <div class="input-group">
+                    <select id="expense-category" required>
+                        <option value="" disabled selected>Select a category...</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="expense-description" required>
+                    <label for="expense-description">Description</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="date" id="expense-date" required>
+                    <label for="expense-date" class="date-label">Date</label>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" id="expense-modal-cancel-btn" class="secondary-button">Cancel</button>
+                    <button type="submit" class="cta-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Set Budget Modal -->
+    <div id="budget-modal" class="modal-container hidden">
+        <div class="glass-card modal-content glow-green">
+            <button id="close-budget-modal-btn" class="close-btn">&times;</button>
+            <form id="budget-form" class="modal-form">
+                <h2>Set Monthly Budget</h2>
+                <div class="input-group">
+                    <input type="number" id="budget-input" required step="0.01" placeholder="e.g., 1500">
+                    <label for="budget-input">Budget Amount</label>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" id="budget-modal-cancel-btn" class="secondary-button">Cancel</button>
+                    <button type="submit" class="cta-button">Set Budget</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>
